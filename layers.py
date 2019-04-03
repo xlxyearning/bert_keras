@@ -27,7 +27,7 @@ class LayerNormalization(keras.layers.Layer):
     def compute_output_shape(self, input_shape):
         return input_shape
 
-    def call(self, x, **kwargs):
+    def call(self, x):
         mean = K.mean(x, axis=-1, keepdims=True)
         var = K.mean(K.square(x - mean), axis=-1, keepdims=True)
         res = (x - mean) / K.sqrt(var + self.epsilon)
